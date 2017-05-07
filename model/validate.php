@@ -137,5 +137,16 @@ class Validate {
         $this->pattern($name, $domain, $domainPattern,
                 'Invalid domain name part.');
     }
+
+    public function number($name, $value, $required = true) {
+        $field = $this->fields->getField($name);
+
+        $this->text($name, $value, $required);
+        if ($field->hasError()) { return; }
+
+        $pattern = '/^[[:digit:]](\.[[:digit:]])?$/';
+        $message = 'Invalid price. Please enter a number.';
+        $this->pattern($name, $value, $pattern, $message, $required);
+    }
 }
 ?>

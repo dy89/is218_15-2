@@ -11,6 +11,7 @@ $validate = new Validate();
 $fields = $validate->getFields();
 $fields->addField('code');
 $fields->addField('name');
+$fields->addField('price');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -58,6 +59,7 @@ if ($action == 'list_products') {
     $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
     $validate->text('code', $code, true, 1, 10);
     $validate->text('name', $name);
+    $validate->number('price', $price);
     if ($fields->hasErrors()) {
        $categories = CategoryDB::getCategories();
        include ('product_add.php');
