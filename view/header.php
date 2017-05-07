@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <!-- the head section -->
+<link rel="stylesheet" href="main.css"/>
 <head>
     <title>My Guitar Shop</title>
     <link rel="stylesheet" type="text/css"
