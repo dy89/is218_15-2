@@ -1,5 +1,6 @@
 <?php include 'view/header.php'; ?>
-<link rel="stylesheet" href="main.css"/>
+<link rel="stylesheet" type="text/css"
+          href="/is218_15-2/main.css">
 <main>
     <h1>Menu</h1>
     <p><a href="product_manager">Product Manager</a></p>
