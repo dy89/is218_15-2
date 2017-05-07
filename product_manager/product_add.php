@@ -16,13 +16,13 @@
 
         <label>Code:</label>
         <input type="input" name="code"
-            value ="<?php echo htmlspecialcharts($code);?>">
+            value ="<?php echo htmlspecialchars($code);?>">
         <?php echo $fields->getField('code')->getHTML(); ?>
         <br>
 
         <label>Name:</label>
         <input type="input" name="name"
-            value ="<?php echo htmlspecialcharts($name);?>">
+            value ="<?php echo htmlspecialchars($name);?>">
         <?php echo $fields->getField('name')->getHTML(); ?>
         <br>
 
