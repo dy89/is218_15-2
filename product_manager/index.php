@@ -59,7 +59,8 @@ if ($action == 'list_products') {
     $validate->text('code', $code, true, 1, 10);
     $validate->text('name', $name);
     if ($fields->hasErrors()) {
-        include 'view/product_add.php';
+       $categories = CategoryDB::getCategories();
+       include ('product_add.php');
         //$category_id == NULL || $category_id == FALSE || $code == NULL || 
             //$name == NULL || $price == NULL || $price == FALSE) {
         //$error = "Invalid product data. Check all fields and try again.";
