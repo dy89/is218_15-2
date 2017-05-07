@@ -144,7 +144,7 @@ class Validate {
         $this->text($name, $value, $required);
         if ($field->hasError()) { return; }
 
-        $pattern = '/^[[:digit:]](\.[[:digit:]])?$/';
+        $pattern = '/^[[:digit:]]/';
         $message = 'Invalid price. Please enter a number.';
         $this->pattern($name, $value, $pattern, $message, $required);
     }
