@@ -15,14 +15,12 @@
         <br>
 
         <label>Code:</label>
-        <input type="input" name="code"
-            value ="<?php echo htmlspecialcharts($code);?>">
+        <input type="input" name="code">
         <?php echo $fields->getField('code')->getHTML(); ?>
         <br>
 
         <label>Name:</label>
-        <input type="input" name="name"
-            value ="<?php echo htmlspecialcharts($name);?>">
+        <input type="input" name="name">
         <?php echo $fields->getField('name')->getHTML(); ?>
         <br>
 
