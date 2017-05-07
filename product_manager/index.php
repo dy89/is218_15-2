@@ -4,6 +4,9 @@ require('../model/category.php');
 require('../model/category_db.php');
 require('../model/product.php');
 require('../model/product_db.php');
+require_once('../model/fields.php');
+require_once('../model/validate.php');
+
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -44,16 +47,24 @@ if ($action == 'list_products') {
     $categories = CategoryDB::getCategories();
     include('product_add.php');
 } else if ($action == 'add_product') {
+    $validate = new Validate();
+    $fields = $validate->getFields();
+    $fields->addField('code');
+    $fields->addField('name');
     $category_id = filter_input(INPUT_POST, 'category_id', 
             FILTER_VALIDATE_INT);
     $code = filter_input(INPUT_POST, 'code');
     $name = filter_input(INPUT_POST, 'name');
     $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_FLOAT);
+    $validate->text('code', '$code', true, 1, 10);
+    $validate->text('name', '$name');
     if ($category_id == NULL || $category_id == FALSE || $code == NULL || 
             $name == NULL || $price == NULL || $price == FALSE) {
         $error = "Invalid product data. Check all fields and try again.";
         include('../errors/error.php');
-    } else {
+    } else if ($fields->hasErrors()) {
+        include 'view/product_add.php';
+    }else {
         $current_category = CategoryDB::getCategory($category_id);
         $product = new Product($current_category, $code, $name, $price);
         ProductDB::addProduct($product);
