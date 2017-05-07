@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <!-- the head section -->
-<link rel="stylesheet" href="main.css"/>
 <head>
     <title>My Guitar Shop</title>
     <link rel="stylesheet" type="text/css"
-          href="/ex_starts/ch15_ex2/main.css">
+          href="/is218_15-2/main.css">
 </head>
 
 <!-- the body section -->
