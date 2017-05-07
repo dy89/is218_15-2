@@ -7,6 +7,10 @@ require('../model/product_db.php');
 require_once('../model/fields.php');
 require_once('../model/validate.php');
 
+    $validate = new Validate();
+    $fields = $validate->getFields();
+    $fields->addField('code');
+    $fields->addField('name');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -47,10 +51,6 @@ if ($action == 'list_products') {
     $categories = CategoryDB::getCategories();
     include('product_add.php');
 } else if ($action == 'add_product') {
-    $validate = new Validate();
-    $fields = $validate->getFields();
-    $fields->addField('code');
-    $fields->addField('name');
     $category_id = filter_input(INPUT_POST, 'category_id', 
             FILTER_VALIDATE_INT);
     $code = filter_input(INPUT_POST, 'code');
