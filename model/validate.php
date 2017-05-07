@@ -140,13 +140,15 @@ class Validate {
 
     public function number($name, $value, $required = true) {
         $field = $this->fields->getField($name);
-
-        $this->text($name, $value, $required);
-        if ($field->hasError()) { return; }
-
-        $pattern = '/^[[:digit:]]/';
-        $message = 'Invalid price. Please enter a number.';
-        $this->pattern($name, $value, $pattern, $message, $required);
+	
+	if ($required && empty($value)) {
+	    $field->setErrorMessage('Required.');
+	}
+	else{
+           $pattern = '/^[[:digit:]]/';
+           $message = 'Invalid price. Please enter a number.';
+           $this->pattern($name, $value, $pattern, $message, $required);
+	}
     }
 }
 ?>
